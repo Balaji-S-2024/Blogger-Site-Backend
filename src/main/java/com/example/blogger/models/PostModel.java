@@ -8,7 +8,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -18,8 +20,8 @@ public class PostModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
+	@Column(name = "post_id")
+	private Integer post_id;
 	
 	@Column(name = "post_title")
 	private String postTitle;
@@ -28,8 +30,9 @@ public class PostModel {
 	private String postContent;
 	
 	
-//	@Column(name = "posted_by")
-//	private String postedBy;
+	@JoinColumn(name = "user_id")
+	@ManyToOne
+	private UserModel postedBy;
 	
 	@Column(name = "post_tags")
 	private String postTags;
@@ -55,11 +58,11 @@ public class PostModel {
 	private byte[] postImage;
 
 	public Integer getId() {
-		return id;
+		return post_id;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.post_id = id;
 	}
 
 	public String getPostTitle() {
@@ -145,7 +148,7 @@ public class PostModel {
 	
 	public PostModel(Integer id, String postTitle, String postContent, byte[] postImage, String postTags) {
 		super();
-		this.id = id;
+		this.post_id = id;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
 		this.postImage = postImage;
@@ -166,5 +169,13 @@ public class PostModel {
 
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
+	}
+
+	public UserModel getPostedBy() {
+		return postedBy;
+	}
+
+	public void setPostedBy(UserModel postedBy) {
+		this.postedBy = postedBy;
 	}
 }

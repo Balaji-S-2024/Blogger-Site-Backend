@@ -1,7 +1,10 @@
 package com.example.blogger.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +35,10 @@ public class PostService {
 
 	public List<PostModel> getAllPosts() {
 		return postRepo.findAll();
+	}
+	
+	public List<PostModel> getPostById(Integer id) {
+		return postRepo.getPostModelById(id);
 	}
 
 }
