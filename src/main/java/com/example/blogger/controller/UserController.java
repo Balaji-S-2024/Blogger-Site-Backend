@@ -21,7 +21,7 @@ import com.example.blogger.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"http://localhost:5173", "https://blogger-site-seven.vercel.app/", "https://blogger-site-seven.vercel.app"})
 @RestController
 @RequestMapping("user")
 public class UserController {

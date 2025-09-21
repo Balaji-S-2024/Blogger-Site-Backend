@@ -38,7 +38,7 @@ public class PostService {
 	}
 	
 	public List<PostModel> getPostById(Integer id) {
-		return postRepo.getPostModelById(id);
+		return postRepo.getPostModelByPostedBy(id);
 	}
 
 }

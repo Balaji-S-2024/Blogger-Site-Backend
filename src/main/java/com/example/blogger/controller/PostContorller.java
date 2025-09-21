@@ -22,7 +22,7 @@ import com.example.blogger.service.PostService;
 
 import jakarta.servlet.annotation.MultipartConfig;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"http://localhost:5173","https://blogger-site-seven.vercel.app/","https://blogger-site-seven.vercel.app"})
 @RestController
 @RequestMapping("post")
 public class PostContorller {
@@ -30,7 +30,7 @@ public class PostContorller {
 	@Autowired
 	PostService postService;
 	
-	@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+	@CrossOrigin(origins = {"http://localhost:5173","https://blogger-site-seven.vercel.app/","https://blogger-site-seven.vercel.app"}, allowCredentials = "true")
 	@PostMapping("/addPost")
 	public PostModel addPost(
 			@RequestParam("postTitle") String title,
@@ -57,7 +57,7 @@ public class PostContorller {
 		return ref;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+	@CrossOrigin(origins = {"http://localhost:5173","https://blogger-site-seven.vercel.app/","https://blogger-site-seven.vercel.app"}, allowCredentials = "true")
 	@GetMapping("/getAllPosts")
 	public List<PostModel> getAllPosts() {
 		System.out.println("Fontend requesting");
@@ -65,13 +65,16 @@ public class PostContorller {
 		return posts;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+	@CrossOrigin(origins = {"http://localhost:5173","https://blogger-site-seven.vercel.app/","https://blogger-site-seven.vercel.app"}, allowCredentials = "true")
 	@GetMapping("/getPostById/{postedBy}")
 	public List<PostModel> getAllPostByUser(@PathVariable Integer postedBy) {
 		System.out.println("Fontend requesting");
+		System.out.println("posted yaru - ");
+		System.out.println(postedBy);
 		List<PostModel> posts = postService.getPostById(postedBy);
-		System.out.println("post printing - ");
-		System.out.println(posts);
+//		System.out.println("post printing - ");
+		System.out.println("posts.size()");
+		System.out.println(posts.size());
 		return posts;
 	}
 

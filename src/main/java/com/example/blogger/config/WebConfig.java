@@ -12,7 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         // This will allow CORS for all URLs in your app
         registry.addMapping("/**")
-                .allowedOrigins("http://192.168.1.10:5173","http://192.168.1.10:5173/","http://localhost:5173")
+                .allowedOrigins("https://blogger-site-seven.vercel.app/","https://blogger-site-seven.vercel.app","http://192.168.1.10:5173","http://192.168.1.10:5173/","http://localhost:5173")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
                 .allowedHeaders("*")  // Allow all headers
                 .allowCredentials(true);  // Allow cookies or JWT tokens
